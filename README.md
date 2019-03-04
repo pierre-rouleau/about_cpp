@@ -1,2 +1,2 @@
-# about_c-
+# about_c++
 Notes related to C++
