@@ -1,9 +1,9 @@
 /* C HEADER: c_example.h
 **
-** Purpose   : A C header defining C functions and data structures.
+** Purpose   : A C header declaring global scope C functions and variables.
 ** Created   : Thursday, July 18 2024.
 ** Author    : Pierre Rouleau <prouleau001@gmail.com>
-** Time-stamp: <2024-07-18 10:30:06 EDT, updated by Pierre Rouleau>
+** Time-stamp: <2024-07-18 11:08:26 EDT, updated by Pierre Rouleau>
 ** Copyright © 2024, Pierre Rouleau
 ** License   : MIT
 */
@@ -38,12 +38,18 @@
 **    inside the include-guard protected area but outside the ``extern "C"``
 **    block.
 **
-** - The ``extern "C" block beginning, enclosed in pre-processor statements; the
+** - The ``extern "C"`` block beginning, enclosed in pre-processor statements; the
 **   C compiler will not see them but the C++ compiler will.
 **
-** - The declarations of C data types and functions.
+** - The declarations of C data types, constants, global variables and functions.
 **
-** - The end of the ``extern "C" block.
+**   - If you absolutely use global variables, the global variables should be
+**     declared inside the header file and they should be declared with the
+**     extern qualifier. Try to avoid global variables though.
+**
+**   - All C functions must be declared with their complete function prototypes.
+**
+** - The end of the ``extern "C"`` block.
 **
 ** - The end of the include guard.
 */
@@ -72,6 +78,15 @@ extern "C" {
 /* -------------------------------------------------------------------------- */
 /* Public Constants
 ** ----------------
+*/
+
+
+/* -------------------------------------------------------------------------- */
+/* Public Global Variables
+** -----------------------
+**
+** Please avoid using global variables!  If you have to use them declare them
+** here with the extern specifier.
 */
 
 
