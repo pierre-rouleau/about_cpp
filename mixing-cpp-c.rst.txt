@@ -339,7 +339,7 @@ must be called by C code but needs to call some C++ code, then:
             {
                 // Not shown here but should catch all C++ exceptions!!!!
 
-                std::cout << "Opening device"; // It can use C++
+                std::cout << "Opening device "  << path_name; // It can use C++
             }
 
 
