@@ -287,6 +287,65 @@ uses the ``.c`` extension.
 
           /* -------------------------------------------------------------------------- */
 
+C++ header file
+---------------
+
+TODO
+
+C++ Implementation File
+-----------------------
+
+TODO
+
+
+C functions implemented inside a C++ Implementation file
+--------------------------------------------------------
+
+In some scenarios, the C code needs to call code implemented in C++.
+
+Remember: C code *cannot* directly call C++ code.
+
+To allow C code to call a function that uses C++ features you must:
+
+- Define a C linkage function inside a C++ implementation file,
+- That C linkage function:
+
+  - must only use C types as arguments and return value,
+  - must be declared as an ``extern "C"`` function in the header that declares it,
+  -  must be defined as an ``extern "C"`` function inside the C++
+     implementation file.
+
+For example, assuming we need to implement an ``open_device()`` function that
+must be called by C code but needs to call some C++ code, then:
+
+- that function should be declared inside the C++ header that corresponds to
+  this C++ implementation file.  The declaration, inside the C++ header should
+  be enclosed in a ``extern "C" {} `` block.  Like this:
+
+  .. code:: c++
+
+            extern "C"
+            {   // C function declaration in a C++ header:
+                int open_device(const char *path_name, int flags);
+            }
+
+- The implementation of this function, inside the C++ implementation file
+  must also declare the function as extern "C":
+
+  .. code:: c++
+
+            // This C++ function can be called from C code
+            extern "C" int open_device(const char *path_name, int flags)
+            {
+                // Not shown here but should catch all C++ exceptions!!!!
+
+                std::cout << "Opening device"; // It can use C++
+            }
+
+
+- It should catch and deal with all C++ exceptions to prevent C++ exceptions
+  to propagate to C caller.  If that happens the program will crash because C
+  does not know how to handle C++ exceptions.
 
 .. ---------------------------------------------------------------------------
 .. links
