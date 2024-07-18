@@ -247,6 +247,15 @@ uses the ``.c`` extension.
           /* -------------------------------------------------------------------------- */
           /* Header Inclusion
           ** ----------------
+          **
+          **  Note: the first header included should be the header defining the
+          **  'interface' of this implementation file.  It should also be included with
+          **  the include "" style.  If the file is inside the same directory nothing else
+          **  is required.  If the file is located inside another directory, write the
+          **  relative path (#include "../c_example.h" for instance).
+          **
+          **  Headers from other libraries and system headers should be included with the
+          **  #include <> style and should be placed after.
           */
 
           #include "c_example.h"

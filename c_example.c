@@ -3,7 +3,7 @@
 ** Purpose   : A C file defining C functions and data structures.
 ** Created   : Thursday, July 18 2024.
 ** Author    : Pierre Rouleau <prouleau001@gmail.com>
-** Time-stamp: <2024-07-18 11:11:55 EDT, updated by Pierre Rouleau>
+** Time-stamp: <2024-07-18 11:18:43 EDT, updated by Pierre Rouleau>
 ** Copyright © 2024, Pierre Rouleau
 ** License   : MIT
 */
@@ -60,6 +60,15 @@
 /* -------------------------------------------------------------------------- */
 /* Header Inclusion
 ** ----------------
+**
+**  Note: the first header included should be the header defining the
+**  'interface' of this implementation file.  It should also be included with
+**  the include "" style.  If the file is inside the same directory nothing else
+**  is required.  If the file is located inside another directory, write the
+**  relative path (#include "../c_example.h" for instance).
+**
+**  Headers from other libraries and system headers should be included with the
+**  #include <> style and should be placed after.
 */
 
 #include "c_example.h"
